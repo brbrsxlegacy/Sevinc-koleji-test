@@ -14,14 +14,14 @@
 ## Bilgisayarda çalıştırma
 Node.js 20 veya üstünü kurun. Depoyu indirin; klasörde `npm start` çalıştırın. `http://localhost:3000` adresini açın. Windows'ta `Baslat.bat` kullanılabilir. Bağımlılık kurulumu gerekmez.
 
-Groq bağlantısı düğmesinden kendi `gsk_...` anahtarınızı girin. https://console.groq.com/keys üzerinden oluşturabilirsiniz. Test üretimi için konu, notlar ve yüklenen kaynak görsel Groq'a gönderilir. API anahtarını GitHub'a eklemeyin.
+Sunucuda `GROQ_API_KEY` yoksa Groq bağlantısı düğmesinden kendi `gsk_...` anahtarınızı girin. https://console.groq.com/keys üzerinden oluşturabilirsiniz. Test üretimi için konu, notlar ve yüklenen kaynak görsel Groq'a gönderilir. API anahtarını GitHub'a eklemeyin.
 
 ## Vercel üzerinden yayınlama
-Bu GitHub deposunu Vercel'e aktarın. Framework Preset: **Other**, Build Command boş, Output Directory `.`. `api/generate.mjs` Node sunucusuz işlev olarak çalışır. Her öğretmen kendi Groq anahtarını panelde girer; ortak servis anahtarı gerekli değildir. Vercel planının süre sınırı uzun üretimleri etkileyebilir.
+Bu GitHub deposunu Vercel'e aktarın. Framework Preset: **Other**, Build Command boş, Output Directory `.`. `api/generate.mjs` Node sunucusuz işlev olarak çalışır. Vercel Settings → Environment Variables bölümüne `GROQ_API_KEY` ekleyin. Anahtarı değer alanına yazın; Production ortamını seçin ve yeniden deploy edin. Öğretmenler panelde anahtar girmeden test oluşturabilir. İsteğe bağlı kişisel anahtar okul anahtarına göre önceliklidir. Ortak anahtarın harcamaları Groq hesabınıza aittir; panel okul hesabı doğrulaması içermez. Vercel planının süre sınırı uzun üretimleri etkileyebilir.
 
 GitHub deposuna kod yüklemek siteyi otomatik yayınlamaz. GitHub Pages tek başına sunucu işlevini çalıştıramaz. Sunucuya ihtiyaç duyan üretim için Vercel veya Node.js kullanın.
 
 ## Modeller ve kontroller
-Metin: `llama-3.3-70b-versatile`; kaynak görselli istek: `qwen/qwen3.8-27b`. Modellerin erişimi Groq hesabına bağlıdır. https://console.groq.com/docs/vision ve https://console.groq.com/docs/text-chat
+Metin: `qwen/qwen3.8-27b`; kaynak görselli istek: `qwen/qwen3.8-27b`. Modellerin erişimi Groq hesabına bağlıdır. https://console.groq.com/docs/vision ve https://console.groq.com/docs/text-chat
 
 `npm test` ile Groq yanıt doğrulaması ve hata akışları kontrol edilir. Gerçek anahtar olmadan canlı model doğrulaması yapılamaz. Soruları ve cevap anahtarını dağıtmadan önce öğretmen kontrol etmelidir. Okul hesapları veya ortak bulut soru bankası bulunmaz; kayıtlar bu tarayıcıya aittir.
