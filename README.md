@@ -25,3 +25,9 @@ GitHub deposuna kod yüklemek siteyi otomatik yayınlamaz. GitHub Pages tek baş
 Metin: `qwen/qwen3.8-27b`; kaynak görselli istek: `qwen/qwen3.8-27b`. Modellerin erişimi Groq hesabına bağlıdır. https://console.groq.com/docs/vision ve https://console.groq.com/docs/text-chat
 
 `npm test` ile Groq yanıt doğrulaması ve hata akışları kontrol edilir. Gerçek anahtar olmadan canlı model doğrulaması yapılamaz. Soruları ve cevap anahtarını dağıtmadan önce öğretmen kontrol etmelidir. Okul hesapları veya ortak bulut soru bankası bulunmaz; kayıtlar bu tarayıcıya aittir.
+
+## Arayüz ve sınav sayfaları
+Turuncu–lacivert arayüz, mobilde açılır test ayarları, dokunmatik kontroller, A4 sayfa bölme, her sayfanın üst ortasında okul logosu, öğrenci bilgileri, sayfa numarası ve ayrı cevap anahtarı. Önizlemede normal/büyük yazı seçilebilir.
+
+Logo okulun kendi sitesinden alınmıştır: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tasarim-7-1400x201.png
+Panel illüstrasyonu OpenAI Imagegen ile üretilmiştir: turuncu kitap, sınav kâğıtları, kalem ve lacivert geometrik öğrenme objeleri; metinsiz, profesyonel eğitim görseli. `assets/learning-studio.webp`. Baskıda sorunun kendi görseli dışında dekoratif illüstrasyon gösterilmez.
