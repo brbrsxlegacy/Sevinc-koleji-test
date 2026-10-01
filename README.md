@@ -1,33 +1,28 @@
-# Sevinç Koleji — Test Atölyesi
+# Sevinç Test Atölyesi
 
-Öğretmenler için Türkçe, mobil uyumlu test hazırlama paneli. Bağımsız projedir; resmi okul hizmeti veya okul kimlik doğrulaması içermez.
+Barbaros'un okula ücretsiz sunmak için geliştirdiği bağımsız öğretmen test hazırlama projesi. Okulun resmî sistemi olduğu iddia edilmez.
 
-## Özellikler
-- Ders, 1–12. sınıf, kazanım, zorluk ve soru sayısıyla gerçek Groq üretimi.
-- Görsel yükleyerek görsele dayalı soru hazırlama; uygun konularda veri grafikleri.
-- Soru ve şık düzenleme, doğru cevap seçimi, açıklamalı cevap anahtarı.
-- Soru kopyalama, sıralama ve silme; her soruya ayrı görsel ekleme.
-- A4 sınav önizleme; cevap anahtarı ayrı sayfada; tarayıcıdan yazdırma veya PDF kaydetme.
-- Bu tarayıcıda taslak kaydetme, JSON içe/dışa aktarma.
-- Groq anahtarı yalnızca oturum belleğinde tutulur; hiçbir dosyaya veya localStorage'a yazılmaz.
+## Mevcut özellikler
+Konu/sınıf/zorluk seçimiyle soru hazırlama, kaynak görseli ve veri grafikleri, düzenleme ve şık seçimi, yukarı/aşağı sıralama, taslak yedekleme, mobil ayarlar.
 
-## Bilgisayarda çalıştırma
-Node.js 20 veya üstünü kurun. Depoyu indirin; klasörde `npm start` çalıştırın. `http://localhost:3000` adresini açın. Windows'ta `Baslat.bat` kullanılabilir. Bağımlılık kurulumu gerekmez.
+**Öğrenci testi PDF** ve **cevap anahtarı PDF** farklı dosyalardır. Öğrenci bilgileri yalnızca ilk test sayfasındadır. Logo ve sayfa numarası her sayfada bulunur. Türkçe fontlar gömülüdür. PDF indirirken yazdırma penceresi gerekmez. Öğretmen ekranında sağlayıcı adı veya API anahtarı girişi yoktur.
 
-Sunucuda `GROQ_API_KEY` yoksa Groq bağlantısı düğmesinden kendi `gsk_...` anahtarınızı girin. https://console.groq.com/keys üzerinden oluşturabilirsiniz. Test üretimi için konu, notlar ve yüklenen kaynak görsel Groq'a gönderilir. API anahtarını GitHub'a eklemeyin.
+## Çalıştırma
+Node.js 20+: `npm ci`, ardından `npm start`. http://localhost:3000
+Sunucuda `GROQ_API_KEY` ortam değişkeni bulunmalıdır. Anahtarı depoya koymayın. Vercel'de `npm ci` install command kullanın.
 
-## Vercel üzerinden yayınlama
-Bu GitHub deposunu Vercel'e aktarın. Framework Preset: **Other**, Build Command boş, Output Directory `.`. `api/generate.mjs` Node sunucusuz işlev olarak çalışır. Vercel Settings → Environment Variables bölümüne `GROQ_API_KEY` ekleyin. Anahtarı değer alanına yazın; Production ortamını seçin ve yeniden deploy edin. Öğretmenler panelde anahtar girmeden test oluşturabilir. İsteğe bağlı kişisel anahtar okul anahtarına göre önceliklidir. Ortak anahtarın harcamaları Groq hesabınıza aittir; panel okul hesabı doğrulaması içermez. Vercel planının süre sınırı uzun üretimleri etkileyebilir.
+## Okul sunum paketi
+- [Bir dakikalık anlatım ve canlı gösterim](docs/OKULA_SUNUM.md)
+- [Öğretmen kullanım rehberi](docs/OGRETMEN_REHBERI.md)
+- [Pilot planı, kabul senaryoları ve geri bildirim](docs/PILOT_VE_KABUL.md)
+- [Yönetici kurulumu, erişim, veri akışı ve giderler](docs/YONETICI_KURULUM.md)
 
-GitHub deposuna kod yüklemek siteyi otomatik yayınlamaz. GitHub Pages tek başına sunucu işlevini çalıştıramaz. Sunucuya ihtiyaç duyan üretim için Vercel veya Node.js kullanın.
+## Doğrulama
+`npm test`: üretim yanıtı doğrulama, sunucu anahtarı, PDF içerik ayrımı, oturum kontrolleri ve arayüz kontrolleri.
+Canlı üretim için çalışan servis hesabı gerekir. Okul pilotu ve gerçek cihaz kabul testleri henüz yapılmış kabul edilmez.
 
-## Modeller ve kontroller
-Metin: `qwen/qwen3.8-27b`; kaynak görselli istek: `qwen/qwen3.8-27b`. Modellerin erişimi Groq hesabına bağlıdır. https://console.groq.com/docs/vision ve https://console.groq.com/docs/text-chat
+## Sınırlar
+Taslaklar bu tarayıcıda saklanır; ortak okul soru bankası ve bireysel öğretmen hesapları yoktur. İsteğe bağlı okul erişim kodu ortak pilot erişimidir. AI çıktısı öğretmen onayı gerektirir. Lisans ücreti istenmez; barındırma/üretim giderleri yöneticiyle netleştirilmelidir.
 
-`npm test` ile Groq yanıt doğrulaması ve hata akışları kontrol edilir. Gerçek anahtar olmadan canlı model doğrulaması yapılamaz. Soruları ve cevap anahtarını dağıtmadan önce öğretmen kontrol etmelidir. Okul hesapları veya ortak bulut soru bankası bulunmaz; kayıtlar bu tarayıcıya aittir.
-
-## Arayüz ve sınav sayfaları
-Turuncu–lacivert arayüz, mobilde açılır test ayarları, dokunmatik kontroller, A4 sayfa bölme, her sayfanın üst ortasında okul logosu, öğrenci bilgileri, sayfa numarası ve ayrı cevap anahtarı. Önizlemede normal/büyük yazı seçilebilir.
-
-Logo okulun kendi sitesinden alınmıştır: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tasarim-7-1400x201.png
-Panel illüstrasyonu OpenAI Imagegen ile üretilmiştir: turuncu kitap, sınav kâğıtları, kalem ve lacivert geometrik öğrenme objeleri; metinsiz, profesyonel eğitim görseli. `assets/learning-studio.webp`. Baskıda sorunun kendi görseli dışında dekoratif illüstrasyon gösterilmez.
+Logo kaynağı: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tasarim-7-1400x201.png
+İllüstrasyon: OpenAI Imagegen ile hazırlanmış turuncu/lacivert eğitim objeleri. Font lisansı: assets/fonts/LICENSE.txt

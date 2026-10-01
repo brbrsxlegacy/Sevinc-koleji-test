@@ -6,5 +6,6 @@ if errorlevel 1 (
  exit /b
 )
 start http://localhost:3000
+call npm ci
 node server.mjs
 pause
