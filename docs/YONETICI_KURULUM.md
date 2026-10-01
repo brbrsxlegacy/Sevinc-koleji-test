@@ -29,3 +29,22 @@ Barbaros okul için lisans veya kullanım ücreti talep etmez. Dış hizmet ve s
 4. Pilot kabul testlerini gerçek cihazlarda tamamla.
 5. Destek sorumlusunu, yedekleme ve güncelleme sürecini yazılı belirle.
 6. Okul çapı kullanım için bireysel kullanıcılar, ortak kayıt bankası ve gerektiğinde denetim izi planla; bu sürümde varmış gibi sunma.
+
+## Yönetici kontrollü öğretmen hesapları
+
+Yalnız okul kodu modu eski kurulumlarla uyumluluk için korunur. İstenen kişilere erişim vermek için aşağıdaki hesap modunu etkinleştirin; sadece kodla giriş bu modda kapanır.
+
+1. Supabase projesi oluşturun. Authentication ayarlarında herkese açık yeni kayıtları kapatın. Proje hesabını okul yöneticisi yönetmeli.
+2. Vercel Environment Variables alanına `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SCHOOL_ACCESS_CODE`, `SCHOOL_ID=sevinc`, `ADMIN_EMAILS` ekleyin. Anahtar yalnız sunucuda kalır; başına NEXT_PUBLIC veya VITE eklemeyin. ADMIN_EMAILS yönetici e-postasıdır (birden çok yönetici virgülle ayrılır).
+3. Supabase Authentication → Users → Add user ile yönetici hesabını ve güçlü şifresini oluşturun. E-postasının ADMIN_EMAILS ile aynı olması gerekir. Yönetici hesabının e-posta sahipliğini kurum içinde doğrulayın; uygulama e-posta göndermez.
+4. Vercel’de yeniden dağıtım yapın. `/panel` adresinde okul kodu + yönetici e-postası + şifreyle giriş yapın.
+5. Yönetici düğmesinden öğretmen e-postası ve en az 12 karakterli başlangıç şifresiyle hesap açın. Şifreyi ilgili öğretmene güvenli bir kanaldan iletin. Hesaplar Supabase’de kalıcıdır.
+6. Öğretmen listesinde erişimi açın/kapatın. Kapatılan hesap her API isteğinde yeniden denetlendiği için eski oturumu da test/PDF üretmeye devam edemez.
+
+Şifre unutulduğunda bu sürümde yönetici Supabase kullanıcı yönetiminden şifreyi yeniler. Oturum süresi dolunca kullanıcı yeniden giriş yapar. Sürekli yenileme veya otomatik e-posta daveti bu sürümde yoktur. Hesap anahtarlarından yalnız biri girilmişse hesap modu açık ama giriş kapalı kalır; iki alanı da tamamlayın.
+
+## Sayfalar
+
+- `/`: herkese açık, arama motorlarının tarayabileceği tanıtım sayfası.
+- `/panel`: giriş isteyen öğretmen alanı. HTML ve API için indeksleme kapalı.
+- Google Sites kurulumu: [GOOGLE_SITES.md](GOOGLE_SITES.md).

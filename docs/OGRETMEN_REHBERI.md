@@ -17,3 +17,7 @@ Taslaklar okulun tüm cihazlarına otomatik aktarılmaz. Tarayıcı verileri sil
 - Görsel boyutu hatasında görselleri küçültün. Bir isteğin toplam boyutu yaklaşık 4 MB ile sınırlıdır.
 - Test hazırlama kapasitesi doluysa biraz bekleyin ve yöneticiye bildirin.
 - Aynı testi yeniden üretmek mevcut düzenlemeleri değiştirir; önce taslağı kaydedin.
+
+## Telefonda PDF kaydetme
+
+Öğrenci testi PDF veya Cevap anahtarı PDF düğmesi dosyayı hazırlar. Dosya kutusundaki **İndir** bağlantısına gerçek bir dokunuşla basın. **PDF aç** dosyayı ayrı sekmede gösterir. Desteklenen cihazlarda **Kaydet / paylaş** dosyanın kendisini paylaşım menüsüne gönderir. iPhone: PDF aç → Paylaş → Dosyalara Kaydet. Uygulama içi tarayıcı engellerse paneli Safari veya Chrome’da açın. Panelin üstündeki **Nasıl kullanılır?** düğmesi adımları gösterir.

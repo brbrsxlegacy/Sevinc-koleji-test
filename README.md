@@ -26,3 +26,7 @@ Taslaklar bu tarayıcıda saklanır; ortak okul soru bankası ve bireysel öğre
 
 Logo kaynağı: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tasarim-7-1400x201.png
 İllüstrasyon: OpenAI Imagegen ile hazırlanmış turuncu/lacivert eğitim objeleri. Font lisansı: assets/fonts/LICENSE.txt
+
+## Güncel erişim ve yayın
+
+Ana sayfa tanıtımdır; öğretmen paneli `/panel` adresindedir. Mobil PDF hazırlandıktan sonra İndir/PDF aç veya Kaydet / paylaş seçeneğine dokunun. Yönetici hesapları için [kurulum](docs/YONETICI_KURULUM.md), Google Sites için [yayın rehberi](docs/GOOGLE_SITES.md). Hesap hizmeti bağlanmadan yönetici kontrollü giriş aktif değildir; eski okul kodu modu korunur.

@@ -1,1 +1,32 @@
-{"functions":{"api/generate.mjs":{"maxDuration":120},"api/pdf.mjs":{"maxDuration":60,"includeFiles":"assets/**"}}}
+{
+  "functions": {
+    "api/generate.mjs": {
+      "maxDuration": 120
+    },
+    "api/pdf.mjs": {
+      "maxDuration": 60,
+      "includeFiles": "assets/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/tanitim.html"
+    },
+    {
+      "source": "/panel",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}
