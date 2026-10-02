@@ -54,3 +54,7 @@ Yalnız okul kodu modu eski kurulumlarla uyumluluk için korunur. İstenen kişi
 Giriş artık ortam değişkeni boş olsa bile zorunludur. Güncel okul kodu kullanıcının talebiyle `2026` olarak `lib/school.mjs` içinde tanımlıdır; eski SCHOOL_ACCESS_CODE değeri bunu değiştirmez. Kod değişikliği bu dosyadan yapılır. Oturum imzası için APP_SESSION_SECRET kullanın; yoksa sunucudaki GROQ_API_KEY kullanılır. İkisi de yoksa geliştirme oturumu süreç başına rastgele imzalanır; kalıcı Vercel oturumları için APP_SESSION_SECRET ayarlayın. Hesap modu ayrıca öğretmen e-postası ve şifre ister.
 
 Panel oturum denetlenene kadar gizlidir; kontrol başarısız olursa giriş açık kalır. Çıkış yap oturumu temizler. Açık/koyu tema düğmesi hem girişte hem panelde vardır; tercih bu cihazda saklanır. PDF çıktıları beyazdır.
+
+## Güncel hesap ve fiyat modeli
+
+Kişisel kod hesabı ve 10 test/gün + Plus 50 TL/ay önceki ücretsiz pilot modelinin yerini alır. Güncel kurulum: [HESAP_VE_ODEME_KURULUM.md](HESAP_VE_ODEME_KURULUM.md). Yönetici e-posta hesabı yönetim içindir; öğretmenler kendilerine özel kodla giriş yapar.

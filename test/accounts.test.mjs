@@ -1,3 +1,4 @@
+process.env.CODE_ACCOUNTS_ENABLED='false';
 import {test} from 'node:test';import assert from 'node:assert/strict';import {session,isAllowed} from '../lib/access.mjs';import {admin,accountCookie} from '../lib/accounts.mjs';
 const response=()=>({headers:{},status(n){this.statusCode=n;return this},json(x){this.body=x;return this},setHeader(k,v){this.headers[k]=v}});
 test('school code plus approved account; disabled accounts lose existing session; teachers cannot administer',async()=>{

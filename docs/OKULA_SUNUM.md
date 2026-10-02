@@ -28,3 +28,7 @@ Bu sürüm bir pilot araçtır. Yapay zekâ doğruluğu garanti etmez, öğretme
 
 ## Sunum günü
 PDF dosyalarını önceden indir; internet sorunu için yedek gösterim hazır tut. Hazırlayan olarak adını belirt. Görüşme, okul onayı ve herhangi bir resmî yazışma aileden bir yetişkinin desteğiyle yürütülebilir.
+
+## Güncel model (2 Ekim 2026)
+
+Kullanıcının kararıyla önceki tamamen ücretsiz pilot yerine günlük 10 ücretsiz test ve aylık 50 TL Plus planı hazırlanmıştır. Kişisel hesaplar ve ödeme canlı bağlantı gerektirir. Güncel açıklamalar: HESAP_VE_ODEME_KURULUM.md.
