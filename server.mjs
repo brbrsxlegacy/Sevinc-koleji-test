@@ -1,7 +1,4 @@
 import profileHandler from './api/profile.mjs';
-import billingHandler from './api/billing.mjs';
-import callbackHandler from './api/payment-callback.mjs';
-import webhookHandler from './api/payment-webhook.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import generateHandler from './api/generate.mjs';
@@ -9,7 +6,7 @@ import pdfHandler from './api/pdf.mjs';
 import sessionHandler from './api/session.mjs';
 import adminHandler from './api/admin.mjs';
 const port=Number(process.env.PORT||3000);
-const handlers={'/api/generate':generateHandler,'/api/pdf':pdfHandler,'/api/session':sessionHandler,'/api/admin':adminHandler,'/api/profile':profileHandler,'/api/billing':billingHandler,'/api/payment-callback':callbackHandler,'/api/payment-webhook':webhookHandler};
+const handlers={'/api/generate':generateHandler,'/api/pdf':pdfHandler,'/api/session':sessionHandler,'/api/admin':adminHandler,'/api/profile':profileHandler};
 http.createServer(async(req,res)=>{
  res.status=n=>{res.statusCode=n;return res};res.json=data=>{res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(data));return res};res.send=data=>{res.end(data);return res};
  try{

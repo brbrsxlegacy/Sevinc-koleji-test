@@ -2,7 +2,6 @@
 create table if not exists public.teacher_profiles (
  id uuid primary key default gen_random_uuid(), code_hash text unique not null,
  name text not null, active boolean not null default false,
- subscription_ref text unique, paid_until timestamptz,
  created_at timestamptz not null default now()
 );
 create table if not exists public.test_usage (
@@ -12,48 +11,22 @@ create table if not exists public.test_usage (
  created_at timestamptz not null default now()
 );
 create index if not exists usage_account_day on public.test_usage(account_id,day);
-create table if not exists public.billing_checkouts (
- id uuid primary key, account_id uuid not null references public.teacher_profiles(id),
- token text unique, subscription_ref text, created_at timestamptz not null default now()
-);
 alter table public.teacher_profiles enable row level security;
 alter table public.test_usage enable row level security;
-alter table public.billing_checkouts enable row level security;
-revoke all on public.teacher_profiles,public.test_usage,public.billing_checkouts from anon,authenticated;
-grant all on public.teacher_profiles,public.test_usage,public.billing_checkouts to service_role;
+revoke all on public.teacher_profiles,public.test_usage from anon,authenticated;
+grant all on public.teacher_profiles,public.test_usage to service_role;
 create or replace function public.reserve_test(p_account uuid) returns jsonb language plpgsql security definer set search_path=public as $$
-declare p teacher_profiles; n integer; reservation uuid; pro boolean;
+declare p teacher_profiles; n integer; reservation uuid;
 begin
  select * into p from teacher_profiles where id=p_account for update;
  if not found or not p.active then raise exception 'account_disabled'; end if;
- pro := coalesce(p.paid_until>now(),false);
  select count(*) into n from test_usage where account_id=p_account and day=(now() at time zone 'Europe/Istanbul')::date and (state='success' or (state='pending' and created_at>now()-interval '10 minutes'));
- if not pro and n>=10 then return jsonb_build_object('allowed',false,'used',n,'limit',10); end if;
  if exists(select 1 from test_usage where account_id=p_account and state='pending' and created_at>now()-interval '10 minutes') then return jsonb_build_object('allowed',false,'busy',true); end if;
  insert into test_usage(account_id) values(p_account) returning id into reservation;
- return jsonb_build_object('allowed',true,'reservation',reservation,'used',n+1,'pro',pro);
+ return jsonb_build_object('allowed',true,'reservation',reservation,'used',n+1);
 end $$;
 revoke all on function public.reserve_test(uuid) from public,anon,authenticated;
 grant execute on function public.reserve_test(uuid) to service_role;
-alter table public.billing_checkouts add column if not exists form_html text;
-alter table public.billing_checkouts add column if not exists expires_at timestamptz default (now()+interval '10 minutes');
-create unique index if not exists one_pending_checkout on public.billing_checkouts(account_id) where subscription_ref is null;
-create or replace function public.reserve_checkout(p_account uuid,p_id uuid) returns jsonb language plpgsql security definer set search_path=public as $$
-declare c billing_checkouts;
-begin
- perform 1 from teacher_profiles where id=p_account and active for update;
- if not found then raise exception 'account_disabled'; end if;
- select * into c from billing_checkouts where account_id=p_account and subscription_ref is null;
- if found and c.expires_at>now() then
-  if c.token is null then raise exception 'checkout_busy'; end if;
-  return jsonb_build_object('id',c.id,'existing',true);
- end if;
- delete from billing_checkouts where account_id=p_account and subscription_ref is null;
- insert into billing_checkouts(id,account_id) values(p_id,p_account);
- return jsonb_build_object('id',p_id,'existing',false);
-end $$;
-revoke all on function public.reserve_checkout(uuid,uuid) from public,anon,authenticated;
-grant execute on function public.reserve_checkout(uuid,uuid) to service_role;
 create table if not exists public.account_attempts (ip_hash text not null,bucket bigint not null,n integer not null,primary key(ip_hash,bucket));
 alter table public.account_attempts enable row level security;
 revoke all on public.account_attempts from anon,authenticated;

@@ -22,7 +22,7 @@ Sunucuda `GROQ_API_KEY` ortam değişkeni bulunmalıdır. Anahtarı depoya koyma
 Canlı üretim için çalışan servis hesabı gerekir. Okul pilotu ve gerçek cihaz kabul testleri henüz yapılmış kabul edilmez.
 
 ## Sınırlar
-Taslaklar bu tarayıcıda saklanır; ortak okul soru bankası ve bireysel öğretmen hesapları yoktur. İsteğe bağlı okul erişim kodu ortak pilot erişimidir. AI çıktısı öğretmen onayı gerektirir. Lisans ücreti istenmez; barındırma/üretim giderleri yöneticiyle netleştirilmelidir.
+Taslaklar bu tarayıcıda saklanır; ortak okul soru bankası yoktur. Okul kodu 2026 zorunludur; kişisel hesaplar Supabase bağlanınca yönetici onayıyla açılır. AI çıktısı öğretmen onayı gerektirir. Lisans ücreti istenmez; barındırma/üretim giderleri yöneticiyle netleştirilmelidir.
 
 Logo kaynağı: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tasarim-7-1400x201.png
 İllüstrasyon: OpenAI Imagegen ile hazırlanmış turuncu/lacivert eğitim objeleri. Font lisansı: assets/fonts/LICENSE.txt
@@ -31,6 +31,6 @@ Logo kaynağı: https://kolej.sevinc.k12.tr/wp-content/uploads/2024/01/Adsiz-tas
 
 Ana sayfa tanıtımdır; öğretmen paneli `/panel` adresindedir. Mobil PDF hazırlandıktan sonra İndir/PDF aç veya Kaydet / paylaş seçeneğine dokunun. Yönetici hesapları için [kurulum](docs/YONETICI_KURULUM.md), Google Sites için [yayın rehberi](docs/GOOGLE_SITES.md). Hesap hizmeti bağlanmadan yönetici kontrollü giriş aktif değildir; eski okul kodu modu korunur.
 
-## Kişisel kod hesabı ve ücretli plan
+## Ücretsiz kullanım ve kişisel hesaplar
 
-Güncel model: ücretsiz 10 test/gün, Sevinç Plus 50 TL/ay. Kişisel 12 haneli kod hesabı okul yöneticisinin onayıyla açılır. Kalıcı günlük sayaç Supabase SQL'de tutulur; gerçek kart aboneliği iyzico ile doğrulanır. [Hesap ve ödeme kurulumu](docs/HESAP_VE_ODEME_KURULUM.md). Ödeme hizmeti bağlanmadan para alınmaz.
+Test hazırlama, düzenleme ve PDF indirme ücretsizdir; günlük test sayısı sınırı yoktur. Kişisel 12 haneli kod hesabı okul yöneticisinin onayıyla açılır. [Hesap kurulumu](docs/HESAP_KURULUM.md).

@@ -31,4 +31,5 @@ PDF dosyalarını önceden indir; internet sorunu için yedek gösterim hazır t
 
 ## Güncel model (2 Ekim 2026)
 
-Kullanıcının kararıyla önceki tamamen ücretsiz pilot yerine günlük 10 ücretsiz test ve aylık 50 TL Plus planı hazırlanmıştır. Kişisel hesaplar ve ödeme canlı bağlantı gerektirir. Güncel açıklamalar: HESAP_VE_ODEME_KURULUM.md.
+
+Test hazırlama ve PDF indirme ücretsizdir. Kişisel kod hesapları için [hesap kurulumu](HESAP_KURULUM.md).

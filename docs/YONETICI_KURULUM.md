@@ -57,4 +57,5 @@ Panel oturum denetlenene kadar gizlidir; kontrol başarısız olursa giriş aç�
 
 ## Güncel hesap ve fiyat modeli
 
-Kişisel kod hesabı ve 10 test/gün + Plus 50 TL/ay önceki ücretsiz pilot modelinin yerini alır. Güncel kurulum: [HESAP_VE_ODEME_KURULUM.md](HESAP_VE_ODEME_KURULUM.md). Yönetici e-posta hesabı yönetim içindir; öğretmenler kendilerine özel kodla giriş yapar.
+
+Test hazırlama ve PDF indirme ücretsizdir. Kişisel kod hesapları için [hesap kurulumu](HESAP_KURULUM.md).
